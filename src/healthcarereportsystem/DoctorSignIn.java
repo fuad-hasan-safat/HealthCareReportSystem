@@ -5,6 +5,15 @@
  */
 package healthcarereportsystem;
 
+import static healthcarereportsystem.HealthCareReportSystem.getProfileName;
+import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
+import static healthcarereportsystem.HealthCareReportSystem.resetDoctorLogin;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author DELL
@@ -27,7 +36,7 @@ public class DoctorSignIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        email = new javax.swing.JTextField();
+        userName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
@@ -38,22 +47,33 @@ public class DoctorSignIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        email.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        userName.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("EMAIL            :");
+        jLabel2.setText("USER NAME    :");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("PASSWORD    :");
 
         signUp.setText("Sign Up");
+        signUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signUpActionPerformed(evt);
+            }
+        });
 
         signIn.setText("Sign In");
+        signIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                signInActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel1.setText("Doctor SIGN IN");
 
-        home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthcarereportsystem/—Pngtree—vector house icon_3774013 - Copy.png"))); // NOI18N
+        home.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        home.setText("HOME");
         home.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeActionPerformed(evt);
@@ -79,7 +99,7 @@ public class DoctorSignIn extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(email)
+                                        .addComponent(userName)
                                         .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(112, 112, 112)
@@ -94,7 +114,7 @@ public class DoctorSignIn extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -116,9 +136,58 @@ public class DoctorSignIn extends javax.swing.JFrame {
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
         // TODO add your handling code here:
         StartPage st = new StartPage();
-        this.setVisible(false);
-        st.setVisible(true);
+        goKlickedPage(this,st);
     }//GEN-LAST:event_homeActionPerformed
+
+    private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            ConnectMSSQL con = new ConnectMSSQL();
+            con.connectDatabase();
+            Connection cn;
+            cn = DriverManager.getConnection(con.ur);
+            
+            String sql = "SELECT * FROM DoctorLogIn_ WHERE userName=? and password=?";
+            
+            String sql1 = "select firstName +' '+ lastName as Name from Doctor_ where userName=?"; // profile
+            
+            PreparedStatement pst = cn.prepareCall(sql);
+            
+            PreparedStatement pstName = cn.prepareCall(sql1); // profile
+            
+            pst.setString(1, userName.getText());
+            pst.setString(2, password.getText());
+            
+            pstName.setString(1, userName.getText()); // profile
+            
+            ResultSet rs = pst.executeQuery();
+            ResultSet rs1 = pstName.executeQuery();
+            boolean b =  con.tryToLogin(rs);
+            
+            getProfileName(rs1);
+            
+            cn.close();
+            
+            resetDoctorLogin(userName,password);
+            DoctorProfile p = new DoctorProfile();
+            if(b) HealthCareReportSystem.goKlickedPage(this, p);
+            
+            
+            
+        }catch(ClassNotFoundException | SQLException e)
+        {
+            
+        }
+        
+    }//GEN-LAST:event_signInActionPerformed
+
+    private void signUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpActionPerformed
+        // TODO add your handling code here:
+        
+        DoctorSignUp st = new DoctorSignUp();
+        goKlickedPage(this,st);
+    }//GEN-LAST:event_signUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,7 +225,6 @@ public class DoctorSignIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField email;
     private javax.swing.JButton home;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -164,5 +232,6 @@ public class DoctorSignIn extends javax.swing.JFrame {
     private javax.swing.JPasswordField password;
     private javax.swing.JButton signIn;
     private javax.swing.JButton signUp;
+    private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables
 }

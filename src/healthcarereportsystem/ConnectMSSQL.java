@@ -9,32 +9,90 @@ package healthcarereportsystem;
  *
  * @author fuads
  */
+import static healthcarereportsystem.HealthCareReportSystem.resetDoctorLogin;
+import java.awt.TextField;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class ConnectMSSQL {
-
-    public Connection connection;
     
-    public static String url = "jdbc:sqlserver://localhost:1433;databaseName=HealthCareReportSystem;user=sa;password=7896";
-
-    public void connectDB() {
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(
-                    "jdbc:sqlserver://localhost:1433;databaseName=HealthCareReportSystem;selectMethod=cursor", "sa", "7896");
-
-            System.out.println("DATABASE NAME IS:" + connection.getMetaData().getDatabaseProductName());
-
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println(e);
-        }
+    /**
+     *
+     */
+    public String ur;
+    public static Connection cn;
+    
+   
+    public void connectDatabase() throws ClassNotFoundException, SQLException
+    {
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        ur = "jdbc:sqlserver://localhost:1433;databaseName=HealthCareReportSystem;user=sa;password=7896";
+        cn = DriverManager.getConnection(ur);
+            
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
         ConnectMSSQL cnObj = new ConnectMSSQL();
-        cnObj.connectDB();
+        cnObj.connectDatabase();
+    }
+    
+    /// for select.....................
+    
+    public boolean tryToLogin(ResultSet rs)
+    {
+        try {
+            if(rs.next())
+            {
+                JOptionPane.showMessageDialog(null, "Username and Password Matched");
+                //Succes field= new Succes();
+                //field.setVisible(true);
+                return true;
+            }
+        } catch (SQLException ex) {
+            //Logger.getLogger(ConnectMSSQL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+    }
+
+    
+    
+    
+    
+    
+ 
+    
+    
+    // for reset fields............................
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // rubish
+    private static class Succes {
+
+        public Succes() {
+        }
+
+        private void setVisible(boolean b) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
     }
 
 }
