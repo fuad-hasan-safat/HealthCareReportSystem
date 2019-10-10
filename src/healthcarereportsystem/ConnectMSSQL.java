@@ -9,18 +9,11 @@ package healthcarereportsystem;
  *
  * @author fuads
  */
-import static healthcarereportsystem.HealthCareReportSystem.resetDoctorLogin;
-import java.awt.TextField;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 public class ConnectMSSQL {
     

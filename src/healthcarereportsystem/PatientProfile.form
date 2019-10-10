@@ -35,7 +35,7 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel2" min="-2" pref="121" max="-2" attributes="0"/>
+                  <Component id="patientName" min="-2" pref="121" max="-2" attributes="0"/>
                   <Component id="jButton4" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="450" max="32767" attributes="0"/>
@@ -62,7 +62,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" pref="40" max="-2" attributes="0"/>
+              <Component id="patientName" min="-2" pref="40" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jButton4" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="108" max="32767" attributes="0"/>
@@ -102,7 +102,7 @@
         <Property name="text" type="java.lang.String" value="Details"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
+    <Component class="javax.swing.JLabel" name="patientName">
       <Properties>
         <Property name="text" type="java.lang.String" value="Patient Name"/>
       </Properties>

@@ -5,14 +5,16 @@
  */
 package healthcarereportsystem;
 
+import static healthcarereportsystem.ConnectMSSQL.cn;
 import static healthcarereportsystem.HealthCareReportSystem.getProfileName;
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
-import static healthcarereportsystem.HealthCareReportSystem.resetDoctorLogin;
-import java.sql.Connection;
-import java.sql.DriverManager;
+import static healthcarereportsystem.HealthCareReportSystem.logInDoctorandFetchName;
+import static healthcarereportsystem.HealthCareReportSystem.resetLoginFields;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -25,6 +27,15 @@ public class DoctorSignIn extends javax.swing.JFrame {
      */
     public DoctorSignIn() {
         initComponents();
+        
+    }
+
+    public JPasswordField getPassword() {
+        return password;
+    }
+
+    public JTextField getUserName() {
+        return userName;
     }
 
     /**
@@ -145,8 +156,6 @@ public class DoctorSignIn extends javax.swing.JFrame {
         {
             ConnectMSSQL con = new ConnectMSSQL();
             con.connectDatabase();
-            Connection cn;
-            cn = DriverManager.getConnection(con.ur);
             
             String sql = "SELECT * FROM DoctorLogIn_ WHERE userName=? and password=?";
             
@@ -156,10 +165,7 @@ public class DoctorSignIn extends javax.swing.JFrame {
             
             PreparedStatement pstName = cn.prepareCall(sql1); // profile
             
-            pst.setString(1, userName.getText());
-            pst.setString(2, password.getText());
-            
-            pstName.setString(1, userName.getText()); // profile
+            logInDoctorandFetchName(pst,pstName,this);
             
             ResultSet rs = pst.executeQuery();
             ResultSet rs1 = pstName.executeQuery();
@@ -169,7 +175,7 @@ public class DoctorSignIn extends javax.swing.JFrame {
             
             cn.close();
             
-            resetDoctorLogin(userName,password);
+            resetLoginFields(userName,password);
             DoctorProfile p = new DoctorProfile();
             if(b) HealthCareReportSystem.goKlickedPage(this, p);
             

@@ -35,7 +35,7 @@ public class HealthCareReportSystem {
     }
 
     //    reset log in page of doctor
-    public static void resetDoctorLogin(JTextField a, JPasswordField b) {
+    public static void resetLoginFields(JTextField a, JPasswordField b) {
         a.setText("");
         b.setText("");
     }
@@ -110,4 +110,27 @@ public class HealthCareReportSystem {
         pst.setString(2, j.getEmail().getText());
         pst.setString(3, j.getPassword().getText());
     }
+       
+       
+       
+       
+       
+       
+       
+       
+     public  static void logInDoctorandFetchName(PreparedStatement pst,PreparedStatement pstName, DoctorSignIn j) throws SQLException
+     {
+            pst.setString(1, j.getUserName().getText());
+            pst.setString(2, j.getPassword().getText());
+            
+            pstName.setString(1, j.getUserName().getText()); // profile
+     }
+     
+      public  static void logInPatientandFetchName(PreparedStatement pst,PreparedStatement pstName, PatientSignIn j) throws SQLException
+     {
+            pst.setString(1, j.getUserName().getText());
+            pst.setString(2, j.getPassword().getText());
+            
+            pstName.setString(1, j.getUserName().getText()); // profile
+     }
 }

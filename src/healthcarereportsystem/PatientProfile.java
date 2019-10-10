@@ -6,6 +6,7 @@
 package healthcarereportsystem;
 
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
+import static healthcarereportsystem.HealthCareReportSystem.profileName;
 
 /**
  *
@@ -18,6 +19,7 @@ public class PatientProfile extends javax.swing.JFrame {
      */
     public PatientProfile() {
         initComponents();
+        patientName.setText(profileName);
     }
 
     /**
@@ -35,7 +37,7 @@ public class PatientProfile extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        patientName = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         home = new javax.swing.JButton();
 
@@ -51,7 +53,7 @@ public class PatientProfile extends javax.swing.JFrame {
 
         jButton4.setText("Details");
 
-        jLabel2.setText("Patient Name");
+        patientName.setText("Patient Name");
 
         jButton5.setText("Back");
 
@@ -70,7 +72,7 @@ public class PatientProfile extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(patientName, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4))
                 .addContainerGap(450, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -91,7 +93,7 @@ public class PatientProfile extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(61, 61, 61)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(patientName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
@@ -160,7 +162,7 @@ public class PatientProfile extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel patientName;
     // End of variables declaration//GEN-END:variables
 }

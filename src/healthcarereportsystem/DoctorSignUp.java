@@ -550,7 +550,7 @@ public class DoctorSignUp extends javax.swing.JFrame {
 
     private void signUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpActionPerformed
         // TODO add your handling code here:
-        System.out.println("date of birth = " + ((JTextField) dateOfBirth.getDateEditor().getUiComponent()).getText());
+        //System.out.println("date of birth = " + ((JTextField) dateOfBirth.getDateEditor().getUiComponent()).getText());
         //ConnectMSSQL con = new ConnectMSSQL();
         try {
             ConnectMSSQL con = new ConnectMSSQL();
@@ -570,6 +570,7 @@ public class DoctorSignUp extends javax.swing.JFrame {
 
             PreparedStatement pst = cn.prepareStatement(sql);
             doctorSingIn(pst,this);
+            
             pst1.executeUpdate();
             pst.executeUpdate();
 
