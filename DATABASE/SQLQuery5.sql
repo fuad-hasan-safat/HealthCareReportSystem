@@ -1,3 +1,9 @@
+USE [master]
+GO
+ALTER LOGIN [sa] WITH PASSWORD='7896'
+GO
+
+
 Create Table Patient_
 (
    patientId int primary key identity (1,1),
@@ -138,5 +144,13 @@ create table DiagnosticCenterLogIn_
 )
 
 
+use HealthCareReportSystem;
 
-SELECT * from DoctorLogIn_,Doctor_
+SELECT * from DoctorLogIn_;
+SELECT * from Doctor_; 
+SELECT * from DiagnosticCenter_;
+SELECT * from DiagnosticCenterLogIn_;
+SELECT * from Patient_;
+SELECT * from PatientLogIn_;
+SELECT * from Report_;
+SELECT * from Test_;

@@ -44,6 +44,7 @@ public class ConnectMSSQL {
         try {
             if(rs.next())
             {
+                System.out.println("Connection Successfull");
                 JOptionPane.showMessageDialog(null, "Username and Password Matched");
                 //Succes field= new Succes();
                 //field.setVisible(true);
