@@ -33,8 +33,8 @@ public class DoctorProfile extends javax.swing.JFrame {
 
         doctorNameShow = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        sendTest = new javax.swing.JButton();
+        sendPrescription = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         home = new javax.swing.JButton();
 
@@ -44,9 +44,19 @@ public class DoctorProfile extends javax.swing.JFrame {
 
         jButton1.setText("Details");
 
-        jButton2.setText("Send Test");
+        sendTest.setText("Send Test");
+        sendTest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendTestActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Send Prescription");
+        sendPrescription.setText("Send Prescription");
+        sendPrescription.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendPrescriptionActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Back");
 
@@ -65,8 +75,8 @@ public class DoctorProfile extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(415, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
+                    .addComponent(sendPrescription)
+                    .addComponent(sendTest))
                 .addGap(52, 52, 52))
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
@@ -89,9 +99,9 @@ public class DoctorProfile extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addComponent(jButton1)
                 .addGap(57, 57, 57)
-                .addComponent(jButton2)
+                .addComponent(sendTest)
                 .addGap(35, 35, 35)
-                .addComponent(jButton3)
+                .addComponent(sendPrescription)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
@@ -108,6 +118,20 @@ public class DoctorProfile extends javax.swing.JFrame {
         StartPage st = new StartPage();
         goKlickedPage(this,st);
     }//GEN-LAST:event_homeActionPerformed
+
+    private void sendTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendTestActionPerformed
+        // TODO add your handling code here:
+          SendTest field = new SendTest();
+        field.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_sendTestActionPerformed
+
+    private void sendPrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendPrescriptionActionPerformed
+        // TODO add your handling code here:
+         SendPrescription field = new SendPrescription();
+        field.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_sendPrescriptionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -148,8 +172,8 @@ public class DoctorProfile extends javax.swing.JFrame {
     private javax.swing.JLabel doctorNameShow;
     private javax.swing.JButton home;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton sendPrescription;
+    private javax.swing.JButton sendTest;
     // End of variables declaration//GEN-END:variables
 }

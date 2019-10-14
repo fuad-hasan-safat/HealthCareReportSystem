@@ -32,7 +32,7 @@ public class DiagnosticCenterProfile extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        sendReport = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         home = new javax.swing.JButton();
 
@@ -44,7 +44,12 @@ public class DiagnosticCenterProfile extends javax.swing.JFrame {
 
         jButton1.setText("Details");
 
-        jButton3.setText("Send Report");
+        sendReport.setText("Send Report");
+        sendReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendReportActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Back");
 
@@ -68,7 +73,7 @@ public class DiagnosticCenterProfile extends javax.swing.JFrame {
                 .addContainerGap(259, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(sendReport)
                 .addGap(25, 25, 25))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
@@ -85,7 +90,7 @@ public class DiagnosticCenterProfile extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(sendReport)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton5)
@@ -102,6 +107,13 @@ public class DiagnosticCenterProfile extends javax.swing.JFrame {
         StartPage st = new StartPage();
         goKlickedPage(this,st);
     }//GEN-LAST:event_homeActionPerformed
+
+    private void sendReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendReportActionPerformed
+        // TODO add your handling code here:
+          SendReport field = new SendReport();
+        field.setVisible(true);
+        setVisible(false);
+    }//GEN-LAST:event_sendReportActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,8 +154,8 @@ public class DiagnosticCenterProfile extends javax.swing.JFrame {
     private javax.swing.JButton home;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton sendReport;
     // End of variables declaration//GEN-END:variables
 }
