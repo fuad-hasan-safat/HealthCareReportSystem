@@ -7,6 +7,10 @@ package healthcarereportsystem;
 
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
 import static healthcarereportsystem.HealthCareReportSystem.profileName;
+import static healthcarereportsystem.HealthCareReportSystem.userid;
+import static healthcarereportsystem.HealthCareReportSystem.username;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +23,18 @@ public class DoctorProfile extends javax.swing.JFrame {
      */
     public DoctorProfile() {
         initComponents();
-        doctorNameShow.setText(profileName);
+        
+        
+         //JOptionPane.showMessageDialog(null, "Doctor Id = "+ userid+", username = "+username + ", Profilename = "+profileName);
+        //doctorNameShow.setText(profileName);
+    }
+
+    public static JLabel getDoctorNameShow() {
+        return doctorNameShow;
+    }
+
+    public static void setDoctorNameShow(JLabel doctorNameShow) {
+        DoctorProfile.doctorNameShow = doctorNameShow;
     }
 
     /**
@@ -169,7 +184,7 @@ public class DoctorProfile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel doctorNameShow;
+    private static javax.swing.JLabel doctorNameShow;
     private javax.swing.JButton home;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
