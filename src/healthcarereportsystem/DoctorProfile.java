@@ -13,17 +13,14 @@ import static healthcarereportsystem.HealthCareReportSystem.username;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import javax.swing.JLabel;
-
-import static healthcarereportsystem.HealthCareReportSystem.profileName;
-
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author pc
  */
-public class DoctorProfile extends javax.swing.JFrame{
+public class DoctorProfile extends javax.swing.JFrame {
 
     /**
      * Creates new form DoctorProfile
@@ -31,7 +28,6 @@ public class DoctorProfile extends javax.swing.JFrame{
     //private static int userId;
     public DoctorProfile() {
         initComponents();
-
       
          //JOptionPane.showMessageDialog(null, "Doctor Id = "+ userid+", username = "+username + ", Profilename = "+profileName);
         //doctorNameShow.setText(profileName);
@@ -50,8 +46,6 @@ public class DoctorProfile extends javax.swing.JFrame{
 
     public static void setDoctorNameShow(JLabel doctorNameShow) {
         DoctorProfile.doctorNameShow = doctorNameShow;
-        doctorNameShow.setText(profileName);
-
     }
 
     /**
@@ -70,7 +64,7 @@ public class DoctorProfile extends javax.swing.JFrame{
         jButton4 = new javax.swing.JButton();
         home = new javax.swing.JButton();
         userid_ = new javax.swing.JLabel();
-        bmdc = new javax.swing.JTextField();
+        bmdc_ = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,6 +103,8 @@ public class DoctorProfile extends javax.swing.JFrame{
 
         userid_.setText("Doctor id");
 
+        bmdc_.setText("bmdc");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,13 +118,14 @@ public class DoctorProfile extends javax.swing.JFrame{
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(doctorNameShow, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(details))
-                .addGap(122, 122, 122)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userid_, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bmdc, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(details)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(doctorNameShow, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(122, 122, 122)
+                        .addComponent(userid_, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(62, 62, 62)
+                        .addComponent(bmdc_)))
+                .addContainerGap(161, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -139,14 +136,17 @@ public class DoctorProfile extends javax.swing.JFrame{
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(doctorNameShow)
-                    .addComponent(userid_))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(details)
-                    .addComponent(bmdc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(doctorNameShow)
+                            .addComponent(userid_)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(bmdc_)))
+                .addGap(20, 20, 20)
+                .addComponent(details)
                 .addGap(57, 57, 57)
                 .addComponent(sendTest)
                 .addGap(35, 35, 35)
@@ -182,7 +182,6 @@ public class DoctorProfile extends javax.swing.JFrame{
         setVisible(false);
     }//GEN-LAST:event_sendPrescriptionActionPerformed
 
-
     private void detailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailsActionPerformed
 //        // TODO add your handling code here:
 
@@ -190,74 +189,50 @@ public class DoctorProfile extends javax.swing.JFrame{
 
 
 
+
+
+            // TODO add your handling code here:
+        
+        // TODO add your handling code here:
+        try {
+            ConnectMSSQL con = new ConnectMSSQL();
+            con.connectDatabase();
+
             d_details st = new d_details();
             goKlickedPage(this,st);
+            
+            String s = userid_.getText();
+      
+
+            String sql = "SELECT * FROM Patient_ WHERE patientId = 's'";
+
+
+
+            PreparedStatement pst = cn.prepareCall(sql);
+
+
+            ResultSet rs = pst.executeQuery();
+
+           
+           // getProfileName(rs);
+
+
+          //  DoctorProfile.getDoctorNameShow().setText(profileName);
+          
+          
+            //d_details.getUserid().setText(Integer.toString(userid));
+
+
+
+        } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-//            // TODO add your handling code here:
-//        
-//        // TODO add your handling code here:
-//        try {
-//            ConnectMSSQL con = new ConnectMSSQL();
-//            con.connectDatabase();
-//
-////            d_details st = new d_details();
-////            goKlickedPage(this,st);
-//            
-//            String s = userid_.getText();
-//      
-//
-//            String sql = "SELECT * FROM Doctor_ WHERE doctorID = 's'";
-//
-//
-//
-//            PreparedStatement pst = cn.prepareCall(sql);
-//
-//
-//            ResultSet rs = pst.executeQuery();
-//
-//           
-//           // getProfileName(rs);
-//
-//
-//          //  DoctorProfile.getDoctorNameShow().setText(profileName);
-//          
-//          
-//            //d_details.getUserid().setText(Integer.toString(userid));
-//            
-//            String sid = rs.getString("country");
-//            bmdc.setText(sid);
-//
-//
-//
-//        } catch (ClassNotFoundException | SQLException e) {
-//            JOptionPane.showMessageDialog(null, e);
-//        }
-//
-//
-//
-//
-//
-//
 
 
 
@@ -311,11 +286,6 @@ public class DoctorProfile extends javax.swing.JFrame{
 
     }//GEN-LAST:event_detailsActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-
     /**
      * @param args the command line arguments
      */
@@ -352,7 +322,7 @@ public class DoctorProfile extends javax.swing.JFrame{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField bmdc;
+    private javax.swing.JLabel bmdc_;
     private javax.swing.JButton details;
     private static javax.swing.JLabel doctorNameShow;
     private javax.swing.JButton home;

@@ -4,37 +4,21 @@
  * and open the template in the editor.
  */
 package healthcarereportsystem;
-import static healthcarereportsystem.ConnectMSSQL.cn;
-import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
+
 import static healthcarereportsystem.HealthCareReportSystem.profileName;
-import static healthcarereportsystem.HealthCareReportSystem.userid;
-import static healthcarereportsystem.HealthCareReportSystem.username;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JLabel;
 
 /**
  *
- * @author sajal
+ * @author fuads
  */
-public class d_details extends javax.swing.JFrame {
-
-//    static Object getUserid() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
+public class AddAdmin extends javax.swing.JFrame {
 
     /**
-     * Creates new form d_details
+     * Creates new form AddAdmin
      */
-    public d_details() {
+    public AddAdmin() {
         initComponents();
-    }
-    
-    public JLabel getUserid() {
-        return uid;
+        label.setText(profileName);
     }
 
     /**
@@ -46,27 +30,28 @@ public class d_details extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        uid = new javax.swing.JLabel();
+        label = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        uid.setText("id");
+        label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        label.setText("Welcome ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(uid, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(506, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(478, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addComponent(uid)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(label, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(266, Short.MAX_VALUE))
         );
 
         pack();
@@ -89,25 +74,25 @@ public class d_details extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(d_details.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(d_details.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(d_details.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(d_details.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new d_details().setVisible(true);
+                new AddAdmin().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel uid;
+    private javax.swing.JLabel label;
     // End of variables declaration//GEN-END:variables
 }
