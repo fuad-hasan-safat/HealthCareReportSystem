@@ -182,8 +182,12 @@ public class DoctorSignIn extends javax.swing.JFrame {
 
             
             
-            JOptionPane.showMessageDialog(null, "Doctor Id = "+ userid+", username = "+username + ", Profilename = "+profileName);
-            DoctorProfile.getDoctorNameShow().setText(profileName);
+            //JOptionPane.showMessageDialog(null, "Doctor Id = "+ userid+", username = "+username + ", Profilename = "+profileName);
+//            DoctorProfile.getDoctorNameShow().setText(profileName);
+//          
+//            DoctorProfile.getUserid().setText(Integer.toString(userid));
+//            
+//            DoctorProfile.getBMDC().setText(Integer.toString(bmdc));
 
             if (b) {
                 HealthCareReportSystem.goKlickedPage(this, DoctorProfile);

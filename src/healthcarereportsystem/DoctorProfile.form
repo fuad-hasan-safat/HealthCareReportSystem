@@ -34,8 +34,13 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <Component id="doctorNameShow" min="-2" pref="99" max="-2" attributes="0"/>
+                  <Component id="doctorNameShow" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                  <Component id="details" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="userid_" min="-2" pref="82" max="-2" attributes="0"/>
+                  <Component id="bmdc" min="-2" pref="38" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -52,9 +57,15 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-              <Component id="doctorNameShow" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="doctorNameShow" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="userid_" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="details" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bmdc" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Component id="sendTest" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
@@ -78,10 +89,13 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="details">
       <Properties>
         <Property name="text" type="java.lang.String" value="Details"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="detailsActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="sendTest">
       <Properties>
@@ -114,6 +128,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="userid_">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Doctor id"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="bmdc">
     </Component>
   </SubComponents>
 </Form>

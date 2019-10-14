@@ -52,6 +52,11 @@ public class PatientProfile extends javax.swing.JFrame {
         jButton3.setText("Test List");
 
         jButton4.setText("Details");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         patientName.setText("Patient Name");
 
@@ -118,6 +123,11 @@ public class PatientProfile extends javax.swing.JFrame {
         StartPage st = new StartPage();
         goKlickedPage(this,st);
     }//GEN-LAST:event_homeActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        p_details st = new p_details();
+        goKlickedPage(this,st);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

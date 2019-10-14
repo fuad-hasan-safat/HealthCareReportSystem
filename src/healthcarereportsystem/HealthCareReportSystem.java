@@ -25,6 +25,7 @@ public class HealthCareReportSystem {
     public static int userid = 0;
     public static String adminName = "";
     
+    
     public static final StartPage StartPage = new StartPage();
 
     public static final DiagnosticCenterProfile DiagnosticCenterProfile = new DiagnosticCenterProfile();
@@ -38,6 +39,8 @@ public class HealthCareReportSystem {
     public static final PatientProfile PatientProfile = new PatientProfile();
     public static final PatientSignIn PatientSignIn = new PatientSignIn();
     public static final PatientSignUp PatientSignUp = new PatientSignUp();
+    
+    public static final d_details d_details = new d_details();
     
      public static final AdminQuery AdminQuery = new AdminQuery();
     
