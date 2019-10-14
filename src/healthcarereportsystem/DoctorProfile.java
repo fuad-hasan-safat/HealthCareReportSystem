@@ -58,6 +58,11 @@ public class DoctorProfile extends javax.swing.JFrame {
         doctorNameShow.setText("Doctor Name");
 
         jButton1.setText("Details");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         sendTest.setText("Send Test");
         sendTest.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +152,10 @@ public class DoctorProfile extends javax.swing.JFrame {
         field.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_sendPrescriptionActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

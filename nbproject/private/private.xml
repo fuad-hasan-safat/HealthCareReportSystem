@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/DATABASE%20PROJECT/HealthCareSystem%20%5B%20fuad%20%5D/HealthCareReportSystem/src/healthcarereportsystem/DoctorSignUp.java</file>
-            <file>file:/D:/DATABASE%20PROJECT/HealthCareSystem%20%5B%20fuad%20%5D/HealthCareReportSystem/src/healthcarereportsystem/ConnectMSSQL.java</file>
-            <file>file:/D:/DATABASE%20PROJECT/HealthCareSystem%20%5B%20fuad%20%5D/HealthCareReportSystem/src/healthcarereportsystem/PatientSignUp.java</file>
-            <file>file:/D:/DATABASE%20PROJECT/HealthCareSystem%20%5B%20fuad%20%5D/HealthCareReportSystem/src/healthcarereportsystem/DoctorSignIn.java</file>
-            <file>file:/D:/DATABASE%20PROJECT/HealthCareSystem%20%5B%20fuad%20%5D/HealthCareReportSystem/src/healthcarereportsystem/HealthCareReportSystem.java</file>
-            <file>file:/D:/DATABASE%20PROJECT/HealthCareSystem%20%5B%20fuad%20%5D/HealthCareReportSystem/src/healthcarereportsystem/PatientTable.java</file>
-            <file>file:/D:/DATABASE%20PROJECT/HealthCareSystem%20%5B%20fuad%20%5D/HealthCareReportSystem/src/healthcarereportsystem/PatientData.java</file>
+            <file>file:/G:/GitHub/HealthCareReportSystem/HealthCareReportSystem/src/healthcarereportsystem/HealthCareReportSystem.java</file>
+            <file>file:/G:/GitHub/HealthCareReportSystem/HealthCareReportSystem/src/healthcarereportsystem/ShowTest.java</file>
+            <file>file:/G:/GitHub/HealthCareReportSystem/HealthCareReportSystem/src/healthcarereportsystem/SendTest.java</file>
+            <file>file:/G:/GitHub/HealthCareReportSystem/HealthCareReportSystem/src/healthcarereportsystem/PatientProfile.java</file>
+            <file>file:/G:/GitHub/HealthCareReportSystem/HealthCareReportSystem/src/healthcarereportsystem/DoctorSignIn.java</file>
+            <file>file:/G:/GitHub/HealthCareReportSystem/HealthCareReportSystem/src/healthcarereportsystem/ShowTestList.java</file>
+            <file>file:/G:/GitHub/HealthCareReportSystem/HealthCareReportSystem/src/healthcarereportsystem/DoctorSignUp.java</file>
+            <file>file:/G:/GitHub/HealthCareReportSystem/HealthCareReportSystem/src/healthcarereportsystem/PatientSignIn.java</file>
         </group>
     </open-files>
 </project-private>
