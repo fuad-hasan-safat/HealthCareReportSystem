@@ -7,6 +7,7 @@ package healthcarereportsystem;
 
 import static healthcarereportsystem.ConnectMSSQL.cn;
 import java.awt.HeadlessException;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -136,6 +137,8 @@ public class PatientData extends javax.swing.JFrame {
         road = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         house = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        search = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -198,14 +201,22 @@ public class PatientData extends javax.swing.JFrame {
 
         jLabel13.setText("House :");
 
+        jLabel14.setText("SEARCH");
+
+        search.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchKeyReleased(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(643, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(752, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -278,13 +289,25 @@ public class PatientData extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(thana, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(15, 15, 15))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1030, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(168, 168, 168)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1030, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(search, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -367,6 +390,69 @@ public class PatientData extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTable_patientMouseClicked
 
+    
+    ///Search Key Functionality
+    private void searchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchKeyReleased
+        
+        
+        
+        try {
+            ConnectMSSQL con = new ConnectMSSQL();
+            con.connectDatabase(); 
+            
+            
+            
+            String search1 = "SELECT * FROM Patient_ WHERE  patientId=?";
+            PreparedStatement pst1 = cn.prepareStatement(search1);
+            
+            pst1.setString(1, search.getText());
+            
+            ResultSet rst1 = pst1.executeQuery();
+            
+            
+            
+            /// for values showing in FORM
+            if(rst1.next())
+            {
+                String sid = rst1.getString("patientId");
+                pid.setText(sid);
+                String sun = rst1.getString("userName");
+                uname.setText(sun);
+                String sfn = rst1.getString("firstName");
+                fname.setText(sfn);
+                String sln = rst1.getString("lastName");
+                lname.setText(sln);
+                String sbg = rst1.getString("bloodGroup");
+                bg.setText(sbg);
+                String sx = rst1.getString("sex");
+                sex.setText(sx);
+                String sdob = rst1.getString("dateOFBirth");
+                dob.setText(sdob);
+                String spn = rst1.getString("contact");
+                phone.setText(spn);
+                String scn = rst1.getString("country");
+                country.setText(scn);
+                String sdv = rst1.getString("division");
+                division.setText(sdv);
+                String sdis = rst1.getString("district");
+                district.setText(sdis);
+                String svg = rst1.getString("village");
+                city.setText(svg);
+                String stn = rst1.getString("thana");
+                thana.setText(stn);
+                String srd = rst1.getString("road");
+                road.setText(srd);
+                String shs = rst1.getString("houseNo");
+                house.setText(shs);
+            }
+            
+        } catch (HeadlessException | ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        
+    }//GEN-LAST:event_searchKeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -417,6 +503,7 @@ public class PatientData extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -434,6 +521,7 @@ public class PatientData extends javax.swing.JFrame {
     private javax.swing.JTextField phone;
     private javax.swing.JTextField pid;
     private javax.swing.JTextField road;
+    private javax.swing.JTextField search;
     private javax.swing.JTextField sex;
     private javax.swing.JTextField thana;
     private javax.swing.JTextField uname;
