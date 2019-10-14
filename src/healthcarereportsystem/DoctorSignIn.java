@@ -6,13 +6,18 @@
 package healthcarereportsystem;
 
 import static healthcarereportsystem.ConnectMSSQL.cn;
+import static healthcarereportsystem.HealthCareReportSystem.DoctorProfile;
 import static healthcarereportsystem.HealthCareReportSystem.getProfileName;
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
 import static healthcarereportsystem.HealthCareReportSystem.logInDoctorandFetchName;
+import static healthcarereportsystem.HealthCareReportSystem.profileName;
 import static healthcarereportsystem.HealthCareReportSystem.resetLoginFields;
+import static healthcarereportsystem.HealthCareReportSystem.userid;
+import static healthcarereportsystem.HealthCareReportSystem.username;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -27,7 +32,7 @@ public class DoctorSignIn extends javax.swing.JFrame {
      */
     public DoctorSignIn() {
         initComponents();
-        
+
     }
 
     public JPasswordField getPassword() {
@@ -147,52 +152,56 @@ public class DoctorSignIn extends javax.swing.JFrame {
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
         // TODO add your handling code here:
         StartPage st = new StartPage();
-        goKlickedPage(this,st);
+        goKlickedPage(this, st);
     }//GEN-LAST:event_homeActionPerformed
 
     private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
         // TODO add your handling code here:
-        try
-        {
+        try {
             ConnectMSSQL con = new ConnectMSSQL();
             con.connectDatabase();
-            
+
             String sql = "SELECT * FROM DoctorLogIn_ WHERE userName=? and password=?";
-            
-            String sql1 = "select firstName +' '+ lastName as Name from Doctor_ where userName=?"; // profile
-            
+
+            String sql1 = "select * from Doctor_ where userName=?"; // profile
+
             PreparedStatement pst = cn.prepareCall(sql);
-            
+
             PreparedStatement pstName = cn.prepareCall(sql1); // profile
-            
-            logInDoctorandFetchName(pst,pstName,this);
-            
+
+            logInDoctorandFetchName(pst, pstName, this);
+
             ResultSet rs = pst.executeQuery();
             ResultSet rs1 = pstName.executeQuery();
-            boolean b =  con.tryToLogin(rs);
-            
+            boolean b = con.tryToLogin(rs);
             getProfileName(rs1);
-            
+
             cn.close();
-            
-            resetLoginFields(userName,password);
-            DoctorProfile p = new DoctorProfile();
-            if(b) HealthCareReportSystem.goKlickedPage(this, p);
-            
+
+            resetLoginFields(userName, password);
+
             
             
-        }catch(ClassNotFoundException | SQLException e)
-        {
-            
+            JOptionPane.showMessageDialog(null, "Doctor Id = "+ userid+", username = "+username + ", Profilename = "+profileName);
+            DoctorProfile.getDoctorNameShow().setText(profileName);
+
+            if (b) {
+                HealthCareReportSystem.goKlickedPage(this, DoctorProfile);
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid pass or user name");
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
         }
-        
+
     }//GEN-LAST:event_signInActionPerformed
 
     private void signUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpActionPerformed
         // TODO add your handling code here:
-        
+
         DoctorSignUp st = new DoctorSignUp();
-        goKlickedPage(this,st);
+        goKlickedPage(this, st);
     }//GEN-LAST:event_signUpActionPerformed
 
     /**

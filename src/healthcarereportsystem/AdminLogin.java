@@ -4,28 +4,33 @@
  * and open the template in the editor.
  */
 package healthcarereportsystem;
-//logInDiagnosticCenterFetchName
+
 import static healthcarereportsystem.ConnectMSSQL.cn;
+import static healthcarereportsystem.HealthCareReportSystem.AdminQuery;
+import static healthcarereportsystem.HealthCareReportSystem.StartPage;
 import static healthcarereportsystem.HealthCareReportSystem.getProfileName;
-import static healthcarereportsystem.HealthCareReportSystem.logInDiagnosticCenterFetchName;
+import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
+import static healthcarereportsystem.HealthCareReportSystem.logInAdminFetchName;
 import static healthcarereportsystem.HealthCareReportSystem.resetLoginFields;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
  *
- * @author DELL
+ * @author fuads
  */
-public class DiagnosticCenterSignIn extends javax.swing.JFrame {
+public class AdminLogin extends javax.swing.JFrame {
 
     /**
-     * Creates new form DiagnosticCenterSignIn
+     * Creates new form AdminLogin
      */
-    public DiagnosticCenterSignIn() {
+    public AdminLogin() {
         initComponents();
         
     }
@@ -47,18 +52,18 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        username = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
-        signUp = new javax.swing.JButton();
-        signIn = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        username = new javax.swing.JTextField();
+        login = new javax.swing.JButton();
         home = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        username.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        jLabel1.setText("Admin Log IN");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Username        :");
@@ -66,19 +71,17 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("PASSWORD    :");
 
-        signUp.setText("Sign Up");
+        username.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
 
-        signIn.setText("Sign In");
-        signIn.addActionListener(new java.awt.event.ActionListener() {
+        login.setText("Log In");
+        login.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signInActionPerformed(evt);
+                loginActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel1.setText("Diagnostic Center SIGN IN");
-
-        home.setText("Home");
+        home.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        home.setText("HOME");
         home.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeActionPerformed(evt);
@@ -90,31 +93,28 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(home, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addGap(87, 87, 87)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(home, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(signIn)
+                        .addComponent(login)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel2))
                             .addGap(30, 30, 30)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(username)
-                                .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(296, 296, 296)
-                        .addComponent(signUp)))
-                .addContainerGap(215, Short.MAX_VALUE))
+                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(236, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(59, 59, 59)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -122,63 +122,52 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(signIn)
-                .addGap(89, 89, 89))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(home)
-                    .addComponent(signUp)))
+                .addGap(49, 49, 49)
+                .addComponent(login)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                .addComponent(home)
+                .addContainerGap())
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
+    private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-        StartPage st = new StartPage();
-        this.setVisible(false);
-        st.setVisible(true);
-    }//GEN-LAST:event_homeActionPerformed
-
-    private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
-        // TODO add your handling code here:
-         try
+        try
         {
             ConnectMSSQL con = new ConnectMSSQL();
             con.connectDatabase();
-            
-            String sql = "SELECT * FROM DiagnosticCenterLogIn_ WHERE username=? and password=?";
-            
-            String sql1 = "select name as Name from DiagnosticCenter_ where username=?"; // profile
-            
+
+            String sql = "SELECT * FROM admin_ WHERE username=? and password=?";
             PreparedStatement pst = cn.prepareCall(sql);
             
-            PreparedStatement pstName = cn.prepareCall(sql1); // profile
-            
-            logInDiagnosticCenterFetchName(pst,pstName,this);
-            
-            ResultSet rs = pst.executeQuery();
-            ResultSet rs1 = pstName.executeQuery();
-            boolean b =  con.tryToLogin(rs);
-            
-            getProfileName(rs1);
+           logInAdminFetchName(pst,this);
+           ResultSet rs = pst.executeQuery();
+           
+           boolean b =  con.tryToLogin(rs);
+           
+            getProfileName(rs);
             
             cn.close();
             
             resetLoginFields(username,password);
-            DoctorProfile p = new DoctorProfile();
-            if(b) HealthCareReportSystem.goKlickedPage(this, p);
+            if(b) goKlickedPage(this, AdminQuery);
             
-            
-            
+            else JOptionPane.showMessageDialog(null, "Invalid pass or user name");
+
+           
         }catch(ClassNotFoundException | SQLException e)
         {
             JOptionPane.showMessageDialog(null, e);
         }
-    }//GEN-LAST:event_signInActionPerformed
+
+    }//GEN-LAST:event_loginActionPerformed
+
+    private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
+        // TODO add your handling code here:
+        goKlickedPage(this,StartPage);
+    }//GEN-LAST:event_homeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,20 +186,20 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DiagnosticCenterSignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DiagnosticCenterSignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DiagnosticCenterSignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DiagnosticCenterSignIn.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DiagnosticCenterSignIn().setVisible(true);
+                new AdminLogin().setVisible(true);
             }
         });
     }
@@ -220,9 +209,8 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JButton login;
     private javax.swing.JPasswordField password;
-    private javax.swing.JButton signIn;
-    private javax.swing.JButton signUp;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }
