@@ -5,6 +5,9 @@
  */
 package healthcarereportsystem;
 
+
+
+
 import static healthcarereportsystem.ConnectMSSQL.cn;
 import static healthcarereportsystem.HealthCareReportSystem.getProfileName;
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
@@ -25,6 +28,16 @@ public class PatientSignIn extends javax.swing.JFrame {
     /**
      * Creates new form PatientSignIn
      */
+
+
+
+
+
+
+    public static String Pusername;
+
+
+
     public PatientSignIn() {
         initComponents();
         
@@ -169,6 +182,10 @@ public class PatientSignIn extends javax.swing.JFrame {
 
     private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
         // TODO add your handling code here:
+        
+        
+        String temp = userName.getText();
+        Pusername = temp;
         
         try
         {

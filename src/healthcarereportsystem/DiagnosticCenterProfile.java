@@ -6,6 +6,10 @@
 package healthcarereportsystem;
 
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 /**
  *
@@ -39,6 +43,11 @@ public class DiagnosticCenterProfile extends javax.swing.JFrame {
         jButton2.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic Light", 1, 14)); // NOI18N
         jLabel1.setText("Diagnostic Center Name");
@@ -117,6 +126,54 @@ public class DiagnosticCenterProfile extends javax.swing.JFrame {
         field.setVisible(true);
         setVisible(false);
     }//GEN-LAST:event_sendReportActionPerformed
+
+    
+    
+    
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+        
+        
+                try {
+                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                    Connection connection = DriverManager.getConnection(
+                    "jdbc:sqlserver://localhost:1433;databaseName=HealthCareReportSystem;selectMethod=cursor", "sa", "7896");
+
+                
+             String sql = "SELECT Patient_.patientId, Patient_.bloodGroup, Patient_.sex, Patient_.dateOFBirth, Patient_.contact, Patient_.country, Patient_.division, Patient_.district, Patient_.village, Patient_.thana, Patient_.road, Patient_.houseNo, PatientLogIn_.email FROM Patient_ INNER JOIN PatientLogIn_ ON Patient_.userName = PatientLogIn_.userName WHERE Patient_.userName =  ?";
+                        
+                        PreparedStatement pst = connection.prepareStatement(sql);
+                        pst.setString(1, PatientSignIn.Pusername);
+                        
+                        ResultSet rs = pst.executeQuery();
+                        
+                        while(rs.next())
+                        {
+                            
+                            /*
+                            hs.setText(rs.getString("houseNo"));
+                            em.setText(rs.getString("email"));
+                            rd.setText(rs.getString("road"));
+                            th.setText(rs.getString("thana"));
+                            ct.setText(rs.getString("village"));
+                            ds.setText(rs.getString("district"));
+                            pn.setText(rs.getString("contact"));
+                            bg.setText(rs.getString("bloodGroup"));
+                            db.setText(rs.getString("dateOFBirth"));
+                            sx.setText(rs.getString("sex"));
+                            cn.setText(rs.getString("country"));
+                            pid.setText(rs.getString("patientId"));
+                            dv.setText(rs.getString("division"));
+                            */
+                            
+                            
+                            
+                        }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
