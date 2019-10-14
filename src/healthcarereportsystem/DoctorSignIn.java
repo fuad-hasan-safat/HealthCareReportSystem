@@ -174,6 +174,14 @@ public class DoctorSignIn extends javax.swing.JFrame {
             getProfileName(rs1);
             
             cn.close();
+<<<<<<< HEAD
+            
+            resetLoginFields(userName,password);
+            DoctorProfile p = new DoctorProfile();
+            if(b) HealthCareReportSystem.goKlickedPage(this, p);
+            
+=======
+>>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
             
             resetLoginFields(userName,password);
             DoctorProfile p = new DoctorProfile();
@@ -181,6 +189,10 @@ public class DoctorSignIn extends javax.swing.JFrame {
             
             
             
+        }catch(ClassNotFoundException | SQLException e)
+        {
+            
+<<<<<<< HEAD
         }catch(ClassNotFoundException | SQLException e)
         {
             
@@ -196,6 +208,8 @@ public class DoctorSignIn extends javax.swing.JFrame {
 
         } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
+=======
+>>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
 =======
 >>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
         }

@@ -7,7 +7,11 @@ package healthcarereportsystem;
 
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import javax.swing.JLabel;
+=======
+import static healthcarereportsystem.HealthCareReportSystem.profileName;
+>>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
 =======
 import static healthcarereportsystem.HealthCareReportSystem.profileName;
 >>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed

@@ -24,6 +24,7 @@ public class HealthCareReportSystem {
      */
     public static String profileName = "";
 <<<<<<< HEAD
+<<<<<<< HEAD
     public static String username = "";
     public static int userid = 0;
 
@@ -47,6 +48,8 @@ public class HealthCareReportSystem {
     public static final AdminQuery AdminQuery = new AdminQuery();
     public static final AdminProfile AdminProfile = new AdminProfile();
     public static final AdminLogin AdminLogin = new AdminLogin();
+=======
+>>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
 =======
 >>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
 
@@ -100,6 +103,7 @@ public class HealthCareReportSystem {
         try {
             if (rs.next()) {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 profileName = rs.getString(2);
                 userid = rs.getInt(1);
                 username = rs.getString(4);
@@ -120,6 +124,9 @@ public class HealthCareReportSystem {
                 adminId = rs.getInt(1);
                 adminName = rs.getString(2);
                 
+=======
+                profileName = rs.getString("Name");
+>>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
             }
         } catch (SQLException ex) {
             //Logger.getLogger(HealthCareReportSystem.class.getName()).log(Level.SEVERE, null, ex);
@@ -187,6 +194,7 @@ public class HealthCareReportSystem {
         pst.setString(3, j.getPassword().getText());
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     public static void signUpDiagnosticCenter(PreparedStatement pst, DiagnosticCenterSignUp j) throws SQLException {
         pst.setString(1, j.getCentenName().getText());
@@ -236,6 +244,8 @@ public class HealthCareReportSystem {
         pst.setString(2, j.getPassword().getText());
     }
 =======
+=======
+>>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
        
        
        
@@ -259,5 +269,8 @@ public class HealthCareReportSystem {
             
             pstName.setString(1, j.getUserName().getText()); // profile
      }
+<<<<<<< HEAD
+>>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
+=======
 >>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
 }
