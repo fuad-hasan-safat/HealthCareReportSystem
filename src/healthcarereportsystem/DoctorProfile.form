@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -24,59 +27,85 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="415" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="sendPrescription" min="-2" max="-2" attributes="0"/>
-                  <Component id="sendTest" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="details" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="doctorNameShow" min="-2" pref="99" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                      <Component id="userid_" min="-2" pref="82" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      <Component id="bmdc_" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton4" min="-2" pref="91" max="-2" attributes="0"/>
+                      <EmptySpace pref="346" max="32767" attributes="0"/>
+                      <Component id="home" min="-2" pref="116" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="sendPrescription" max="32767" attributes="0"/>
+                          <Component id="sendTest" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="161" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jButton4" min="-2" pref="91" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="home" min="-2" pref="116" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
+              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="dn" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                  <Component id="did" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                  <Component id="bmdc" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="sp" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                      <Component id="dg" min="-2" max="-2" attributes="0"/>
+                      <Component id="ps" min="-2" max="-2" attributes="0"/>
+                      <Component id="clg" alignment="1" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="em" min="-2" max="-2" attributes="0"/>
+                  <Component id="sx" min="-2" max="-2" attributes="0"/>
+                  <Component id="db" min="-2" max="-2" attributes="0"/>
+                  <Component id="bg" min="-2" max="-2" attributes="0"/>
+                  <Component id="pn" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="doctorNameShow" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="userid_" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
-                      <Component id="bmdc_" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="dn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="pn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-              <Component id="details" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="did" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bg" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="bmdc" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="db" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="sp" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="sx" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="ps" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="em" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="dg" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="clg" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="67" max="32767" attributes="0"/>
               <Component id="sendTest" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="sendPrescription" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="130" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="home" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -87,21 +116,13 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="doctorNameShow">
+    <Component class="javax.swing.JLabel" name="dn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Doctor Name"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
       </AuxValues>
-    </Component>
-    <Component class="javax.swing.JButton" name="details">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Details"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="detailsActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="sendTest">
       <Properties>
@@ -135,14 +156,59 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="homeActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="userid_">
+    <Component class="javax.swing.JLabel" name="did">
       <Properties>
         <Property name="text" type="java.lang.String" value="Doctor id"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="bmdc_">
+    <Component class="javax.swing.JLabel" name="bmdc">
       <Properties>
         <Property name="text" type="java.lang.String" value="bmdc"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="sp">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="speciality"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ps">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="posting"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="dg">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="degree"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="clg">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="college"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="pn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="phone"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="bg">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="bloodgroup"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="db">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="date of birth"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="sx">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="sex"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="em">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="email"/>
       </Properties>
     </Component>
   </SubComponents>
