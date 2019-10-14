@@ -4,17 +4,6 @@
  * and open the template in the editor.
  */
 package healthcarereportsystem;
-//logInDiagnosticCenterFetchName
-import static healthcarereportsystem.ConnectMSSQL.cn;
-import static healthcarereportsystem.HealthCareReportSystem.getProfileName;
-import static healthcarereportsystem.HealthCareReportSystem.logInDiagnosticCenterFetchName;
-import static healthcarereportsystem.HealthCareReportSystem.resetLoginFields;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 /**
  *
@@ -27,15 +16,6 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
      */
     public DiagnosticCenterSignIn() {
         initComponents();
-        
-    }
-
-    public JPasswordField getPassword() {
-        return password;
-    }
-
-    public JTextField getUsername() {
-        return username;
     }
 
     /**
@@ -47,7 +27,7 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        username = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
@@ -58,10 +38,10 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        username.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        email.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setText("Username        :");
+        jLabel2.setText("EMAIL            :");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("PASSWORD    :");
@@ -69,16 +49,11 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
         signUp.setText("Sign Up");
 
         signIn.setText("Sign In");
-        signIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signInActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel1.setText("Diagnostic Center SIGN IN");
 
-        home.setText("Home");
+        home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/healthcarereportsystem/—Pngtree—vector house icon_3774013 - Copy.png"))); // NOI18N
         home.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 homeActionPerformed(evt);
@@ -91,23 +66,24 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(home, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(signIn)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGap(30, 30, 30)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(username)
-                                .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(296, 296, 296)
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(signIn)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(email)
+                                    .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
                         .addComponent(signUp)))
-                .addContainerGap(215, Short.MAX_VALUE))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,19 +93,19 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(signIn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(signIn)
+                    .addComponent(signUp))
                 .addGap(89, 89, 89))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(home)
-                    .addComponent(signUp)))
+                .addComponent(home))
         );
 
         pack();
@@ -142,43 +118,6 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
         this.setVisible(false);
         st.setVisible(true);
     }//GEN-LAST:event_homeActionPerformed
-
-    private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
-        // TODO add your handling code here:
-         try
-        {
-            ConnectMSSQL con = new ConnectMSSQL();
-            con.connectDatabase();
-            
-            String sql = "SELECT * FROM DiagnosticCenterLogIn_ WHERE username=? and password=?";
-            
-            String sql1 = "select name as Name from DiagnosticCenter_ where username=?"; // profile
-            
-            PreparedStatement pst = cn.prepareCall(sql);
-            
-            PreparedStatement pstName = cn.prepareCall(sql1); // profile
-            
-            logInDiagnosticCenterFetchName(pst,pstName,this);
-            
-            ResultSet rs = pst.executeQuery();
-            ResultSet rs1 = pstName.executeQuery();
-            boolean b =  con.tryToLogin(rs);
-            
-            getProfileName(rs1);
-            
-            cn.close();
-            
-            resetLoginFields(username,password);
-            DoctorProfile p = new DoctorProfile();
-            if(b) HealthCareReportSystem.goKlickedPage(this, p);
-            
-            
-            
-        }catch(ClassNotFoundException | SQLException e)
-        {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }//GEN-LAST:event_signInActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,6 +155,7 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField email;
     private javax.swing.JButton home;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -223,6 +163,5 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
     private javax.swing.JPasswordField password;
     private javax.swing.JButton signIn;
     private javax.swing.JButton signUp;
-    private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,35 +6,28 @@
 package healthcarereportsystem;
 
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
-import static healthcarereportsystem.HealthCareReportSystem.profileName;
-import static healthcarereportsystem.HealthCareReportSystem.userid;
-import static healthcarereportsystem.HealthCareReportSystem.username;
+<<<<<<< HEAD
+<<<<<<< HEAD
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+=======
+import static healthcarereportsystem.HealthCareReportSystem.profileName;
+>>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
+=======
+import static healthcarereportsystem.HealthCareReportSystem.profileName;
+>>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
 
 /**
  *
  * @author pc
  */
-public class DoctorProfile extends javax.swing.JFrame {
+public class DoctorProfile extends javax.swing.JFrame{
 
     /**
      * Creates new form DoctorProfile
      */
     public DoctorProfile() {
         initComponents();
-        
-        
-         //JOptionPane.showMessageDialog(null, "Doctor Id = "+ userid+", username = "+username + ", Profilename = "+profileName);
-        //doctorNameShow.setText(profileName);
-    }
-
-    public static JLabel getDoctorNameShow() {
-        return doctorNameShow;
-    }
-
-    public static void setDoctorNameShow(JLabel doctorNameShow) {
-        DoctorProfile.doctorNameShow = doctorNameShow;
+        doctorNameShow.setText(profileName);
     }
 
     /**
@@ -193,7 +186,7 @@ public class DoctorProfile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private static javax.swing.JLabel doctorNameShow;
+    private javax.swing.JLabel doctorNameShow;
     private javax.swing.JButton home;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;

@@ -6,17 +6,20 @@
 package healthcarereportsystem;
 
 import static healthcarereportsystem.ConnectMSSQL.cn;
+import static healthcarereportsystem.HealthCareReportSystem.AdminProfile;
 import static healthcarereportsystem.HealthCareReportSystem.AdminQuery;
 import static healthcarereportsystem.HealthCareReportSystem.StartPage;
+import static healthcarereportsystem.HealthCareReportSystem.adminId;
+import static healthcarereportsystem.HealthCareReportSystem.adminName;
+import static healthcarereportsystem.HealthCareReportSystem.alreadylogedin;
+import static healthcarereportsystem.HealthCareReportSystem.getAdmin;
 import static healthcarereportsystem.HealthCareReportSystem.getProfileName;
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
-import static healthcarereportsystem.HealthCareReportSystem.logInAdminFetchName;
+import static healthcarereportsystem.HealthCareReportSystem.logInAdmin;
 import static healthcarereportsystem.HealthCareReportSystem.resetLoginFields;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
@@ -32,7 +35,7 @@ public class AdminLogin extends javax.swing.JFrame {
      */
     public AdminLogin() {
         initComponents();
-        
+
     }
 
     public JPasswordField getPassword() {
@@ -134,31 +137,42 @@ public class AdminLogin extends javax.swing.JFrame {
 
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-        try
-        {
+        try {
             ConnectMSSQL con = new ConnectMSSQL();
             con.connectDatabase();
 
             String sql = "SELECT * FROM admin_ WHERE username=? and password=?";
             PreparedStatement pst = cn.prepareCall(sql);
-            
-           logInAdminFetchName(pst,this);
-           ResultSet rs = pst.executeQuery();
-           
-           boolean b =  con.tryToLogin(rs);
-           
-            getProfileName(rs);
-            
-            cn.close();
-            
-            resetLoginFields(username,password);
-            if(b) goKlickedPage(this, AdminQuery);
-            
-            else JOptionPane.showMessageDialog(null, "Invalid pass or user name");
 
-           
-        }catch(ClassNotFoundException | SQLException e)
-        {
+            pst.setString(1, getUsername().getText());
+            pst.setString(2, getPassword().getText());
+
+            //logInAdmin(pst,this);
+            ResultSet rs = pst.executeQuery();
+
+            boolean b = con.tryToLogin(rs);
+
+            //getAdmin(rs);
+            
+
+            if (b) {
+                adminId = rs.getInt(1);
+                adminName = rs.getString(2);
+                sql = "UPDATE admin_ SET session=?";
+                pst = cn.prepareCall(sql);
+                pst.setString(1, "ON");
+                pst.executeUpdate();
+                cn.close();
+                AdminProfile.getAdminName().setText(adminName);
+                AdminProfile.getAdminId().setText(Integer.toString(adminId));
+                goKlickedPage(this, AdminQuery);
+            } else {
+                JOptionPane.showMessageDialog(null, "Invalid pass or user name");
+                resetLoginFields(username, password);
+            }
+
+            cn.close();
+        } catch (ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
 
@@ -166,7 +180,7 @@ public class AdminLogin extends javax.swing.JFrame {
 
     private void homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeActionPerformed
         // TODO add your handling code here:
-        goKlickedPage(this,StartPage);
+        goKlickedPage(this, StartPage);
     }//GEN-LAST:event_homeActionPerformed
 
     /**
@@ -200,6 +214,7 @@ public class AdminLogin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new AdminLogin().setVisible(true);
+
             }
         });
     }
