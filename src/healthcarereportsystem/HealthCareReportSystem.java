@@ -23,6 +23,7 @@ public class HealthCareReportSystem {
     /**
      */
     public static String profileName = "";
+<<<<<<< HEAD
     public static String username = "";
     public static int userid = 0;
 
@@ -46,6 +47,8 @@ public class HealthCareReportSystem {
     public static final AdminQuery AdminQuery = new AdminQuery();
     public static final AdminProfile AdminProfile = new AdminProfile();
     public static final AdminLogin AdminLogin = new AdminLogin();
+=======
+>>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
 
     public static void main(String[] args) {
         // TODO code application logic here
@@ -96,11 +99,15 @@ public class HealthCareReportSystem {
     public static void getProfileName(ResultSet rs) {
         try {
             if (rs.next()) {
+<<<<<<< HEAD
                 profileName = rs.getString(2);
                 userid = rs.getInt(1);
                 username = rs.getString(4);
 
                 //adminName = rs.getString(1);
+=======
+                profileName = rs.getString("Name");
+>>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
             }
         } catch (SQLException ex) {
             //Logger.getLogger(HealthCareReportSystem.class.getName()).log(Level.SEVERE, null, ex);
@@ -134,7 +141,8 @@ public class HealthCareReportSystem {
         pst.setString(10, j.getSex().getSelectedItem().toString());
         pst.setString(11, ((JTextField) j.getDateOfBirth().getDateEditor().getUiComponent()).getText());
 
-        //System.out.println("date of birth = " + ((JTextField) j.getDateOfBirth().getDateEditor().getUiComponent()).getText());
+        System.out.println("date of birth = " + ((JTextField) j.getDateOfBirth().getDateEditor().getUiComponent()).getText());
+
         pst.setString(12, j.getContact().getText());
         pst.setString(13, j.getCountry().getSelectedItem().toString());
         pst.setString(14, j.getDivision().getSelectedItem().toString());
@@ -160,7 +168,7 @@ public class HealthCareReportSystem {
         pst.setString(4, j.getBloodGroup().getSelectedItem().toString());
 
         pst.setString(5, j.getSex().getSelectedItem().toString());
-        pst.setString(6, ((JTextField) j.getDateOfBirth().getDateEditor().getUiComponent()).getText());
+        pst.setString(6,((JTextField) j.getDateOfBirth().getDateEditor().getUiComponent()).getText());
         pst.setString(7, j.getContact().getText());
         pst.setString(8, j.getCountry().getSelectedItem().toString());
         //String bldGrp =
@@ -172,12 +180,13 @@ public class HealthCareReportSystem {
         pst.setString(13, j.getRoad().getText());
         pst.setString(14, j.getHouse().getText());
     }
-
-    public static void patientSingIn(PreparedStatement pst, PatientSignUp j) throws SQLException {
+    
+       public static void patientSingIn(PreparedStatement pst, PatientSignUp j) throws SQLException {
         pst.setString(1, j.getUssername().getText());
         pst.setString(2, j.getEmail().getText());
         pst.setString(3, j.getPassword().getText());
     }
+<<<<<<< HEAD
 
     public static void signUpDiagnosticCenter(PreparedStatement pst, DiagnosticCenterSignUp j) throws SQLException {
         pst.setString(1, j.getCentenName().getText());
@@ -226,4 +235,29 @@ public class HealthCareReportSystem {
         pst.setString(1, j.getUsername().getText());
         pst.setString(2, j.getPassword().getText());
     }
+=======
+       
+       
+       
+       
+       
+       
+       
+       
+     public  static void logInDoctorandFetchName(PreparedStatement pst,PreparedStatement pstName, DoctorSignIn j) throws SQLException
+     {
+            pst.setString(1, j.getUserName().getText());
+            pst.setString(2, j.getPassword().getText());
+            
+            pstName.setString(1, j.getUserName().getText()); // profile
+     }
+     
+      public  static void logInPatientandFetchName(PreparedStatement pst,PreparedStatement pstName, PatientSignIn j) throws SQLException
+     {
+            pst.setString(1, j.getUserName().getText());
+            pst.setString(2, j.getPassword().getText());
+            
+            pstName.setString(1, j.getUserName().getText()); // profile
+     }
+>>>>>>> parent of 98b575a... fetch part in DoctorSignIn to DoctorProfile Showed
 }
