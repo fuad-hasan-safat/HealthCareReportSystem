@@ -13,14 +13,17 @@ import static healthcarereportsystem.HealthCareReportSystem.username;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+
+import static healthcarereportsystem.HealthCareReportSystem.profileName;
+
 
 /**
  *
  * @author pc
  */
-public class DoctorProfile extends javax.swing.JFrame {
+public class DoctorProfile extends javax.swing.JFrame{
 
     /**
      * Creates new form DoctorProfile
@@ -28,6 +31,7 @@ public class DoctorProfile extends javax.swing.JFrame {
     //private static int userId;
     public DoctorProfile() {
         initComponents();
+
       
          //JOptionPane.showMessageDialog(null, "Doctor Id = "+ userid+", username = "+username + ", Profilename = "+profileName);
         //doctorNameShow.setText(profileName);
@@ -46,6 +50,8 @@ public class DoctorProfile extends javax.swing.JFrame {
 
     public static void setDoctorNameShow(JLabel doctorNameShow) {
         DoctorProfile.doctorNameShow = doctorNameShow;
+        doctorNameShow.setText(profileName);
+
     }
 
     /**
@@ -176,6 +182,7 @@ public class DoctorProfile extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_sendPrescriptionActionPerformed
 
+
     private void detailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailsActionPerformed
 //        // TODO add your handling code here:
 
@@ -303,6 +310,11 @@ public class DoctorProfile extends javax.swing.JFrame {
 //        }
 
     }//GEN-LAST:event_detailsActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     /**
      * @param args the command line arguments

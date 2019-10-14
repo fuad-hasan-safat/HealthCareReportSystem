@@ -35,7 +35,7 @@ public class PatientProfile extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        testList = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         patientName = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
@@ -46,10 +46,25 @@ public class PatientProfile extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Report List");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Prescription List");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Test List");
+        testList.setText("Test List");
+        testList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                testListActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Details");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -83,7 +98,7 @@ public class PatientProfile extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(testList, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35))
@@ -102,7 +117,7 @@ public class PatientProfile extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(testList)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
@@ -124,10 +139,33 @@ public class PatientProfile extends javax.swing.JFrame {
         goKlickedPage(this,st);
     }//GEN-LAST:event_homeActionPerformed
 
+
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         p_details st = new p_details();
         goKlickedPage(this,st);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void testListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testListActionPerformed
+        // TODO add your handling code here:
+           ShowTestList field = new ShowTestList();
+           field.setVisible(true);
+           setVisible(false);
+    }//GEN-LAST:event_testListActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ShowReportList field = new ShowReportList();
+           field.setVisible(true);
+           setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ShowPrescriptionLists field = new  ShowPrescriptionLists();
+           field.setVisible(true);
+           setVisible(false);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -168,11 +206,11 @@ public class PatientProfile extends javax.swing.JFrame {
     private javax.swing.JButton home;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel patientName;
+    private javax.swing.JButton testList;
     // End of variables declaration//GEN-END:variables
 }

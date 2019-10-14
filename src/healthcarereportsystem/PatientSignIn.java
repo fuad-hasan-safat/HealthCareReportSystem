@@ -179,9 +179,13 @@ public class PatientSignIn extends javax.swing.JFrame {
             
             String sql1 = "select firstName +' '+ lastName as Name from Patient_ where userName=?"; // profile
             
+          
+            
             PreparedStatement pst = cn.prepareCall(sql);
             
             PreparedStatement pstName = cn.prepareCall(sql1); // profile
+            
+             
             
             logInPatientandFetchName(pst,pstName,this);
             
