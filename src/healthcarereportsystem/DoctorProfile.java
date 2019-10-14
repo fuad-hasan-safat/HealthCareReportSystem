@@ -6,17 +6,13 @@
 package healthcarereportsystem;
 
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
-import static healthcarereportsystem.HealthCareReportSystem.profileName;
-import static healthcarereportsystem.HealthCareReportSystem.userid;
-import static healthcarereportsystem.HealthCareReportSystem.username;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author pc
  */
-public class DoctorProfile extends javax.swing.JFrame {
+public class DoctorProfile extends javax.swing.JFrame{
 
     /**
      * Creates new form DoctorProfile

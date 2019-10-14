@@ -182,7 +182,7 @@ public class DoctorSignIn extends javax.swing.JFrame {
 
             
             
-            JOptionPane.showMessageDialog(null, "Doctor Id = "+ userid+", username = "+username + ", Profilename = "+profileName);
+            //JOptionPane.showMessageDialog(null, "Doctor Id = "+ userid+", username = "+username + ", Profilename = "+profileName);
             DoctorProfile.getDoctorNameShow().setText(profileName);
 
             if (b) {
