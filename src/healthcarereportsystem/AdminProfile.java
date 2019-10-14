@@ -7,13 +7,9 @@ package healthcarereportsystem;
 
 import static healthcarereportsystem.ConnectMSSQL.cn;
 import static healthcarereportsystem.HealthCareReportSystem.AdminLogin;
-import static healthcarereportsystem.HealthCareReportSystem.alreadylogedin;
-import static healthcarereportsystem.HealthCareReportSystem.getProfileName;
+import static healthcarereportsystem.HealthCareReportSystem.checkLogin;
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
-import static healthcarereportsystem.HealthCareReportSystem.logInAdmin;
-import static healthcarereportsystem.HealthCareReportSystem.resetLoginFields;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -29,9 +25,9 @@ public class AdminProfile extends javax.swing.JFrame {
      */
     public AdminProfile() {
         initComponents();
-        if(!alreadylogedin()){
-            goKlickedPage(this, AdminLogin);
-        }
+//        if(!checkLogin()){
+//            goKlickedPage(this, AdminLogin);
+//        }
         
     }
 
