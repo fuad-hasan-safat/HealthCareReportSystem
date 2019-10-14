@@ -143,6 +143,25 @@ create table DiagnosticCenterLogIn_
    on DELETE CASCADE,
 )
 
+Create Table Test
+(  
+   uniqueCode int primary key identity(1,1),
+   patientId int not null,
+   doctorId int not null,
+   document text,
+   date datetime,
+  CONSTRAINT fk_test_paientId
+	FOREIGN KEY (patientId)
+   REFERENCES Patient_ (patientId)
+   on DELETE CASCADE,
+
+  CONSTRAINT fk_test_doctorId
+	FOREIGN KEY (doctorId)
+   REFERENCES Doctor_ (doctorId)
+   on DELETE CASCADE,
+)
+
+
 
 use HealthCareReportSystem;
 
@@ -154,3 +173,6 @@ SELECT * from Patient_;
 SELECT * from PatientLogIn_;
 SELECT * from Report_;
 SELECT * from Test_;
+
+insert into DiagnosticCenter_
+values('Padma','1990-01-02','01710123123','Bangladesh','Dhaka','Dhaka','Dhaka','Mohammadpur','New Road','85/1')
