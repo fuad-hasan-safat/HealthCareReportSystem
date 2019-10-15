@@ -9,10 +9,14 @@ import static healthcarereportsystem.ConnectMSSQL.cn;
 import static healthcarereportsystem.HealthCareReportSystem.getProfileName;
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
 import static healthcarereportsystem.HealthCareReportSystem.logInPatientandFetchName;
+import static healthcarereportsystem.HealthCareReportSystem.PatientProfile;
 import static healthcarereportsystem.HealthCareReportSystem.resetLoginFields;
+import static healthcarereportsystem.HealthCareReportSystem.userid;
+import static healthcarereportsystem.HealthCareReportSystem.username;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -177,11 +181,11 @@ public class PatientSignIn extends javax.swing.JFrame {
             
             String sql = "SELECT * FROM PatientLogIn_ WHERE userName=? and password=?";
             
-            String sql1 = "select firstName +' '+ lastName as Name from Patient_ where userName=?"; // profile
+            String sql1 = "select * from Patient_ where userName=?"; // profile
             
-            PreparedStatement pst = cn.prepareCall(sql);
+            PreparedStatement pst = cn.prepareStatement(sql);
             
-            PreparedStatement pstName = cn.prepareCall(sql1); // profile
+            PreparedStatement pstName = cn.prepareStatement(sql1); // profile
             
             logInPatientandFetchName(pst,pstName,this);
             
@@ -190,12 +194,14 @@ public class PatientSignIn extends javax.swing.JFrame {
             boolean b =  con.tryToLogin(rs);
             
             getProfileName(rs1);
-            
+            //PatientProfile.getUsername_lable().setText(username);
+            //JOptionPane.showMessageDialog(null, "user name = "+username+", usir id = "+userid);
             cn.close();
             
             resetLoginFields(userName,password);
             PatientProfile p = new PatientProfile();
             if(b) HealthCareReportSystem.goKlickedPage(this, p);
+            else  JOptionPane.showMessageDialog(null, "Invalid user name or password");
             
             
             

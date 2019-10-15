@@ -103,7 +103,7 @@ public class HealthCareReportSystem {
             if (rs.next()) {
                 //profileName = rs.getString(2);
                 userid = rs.getInt(1);
-                //username = rs.getString(4);
+                username = rs.getString(4);
 
                 //adminName = rs.getString(1);
             }

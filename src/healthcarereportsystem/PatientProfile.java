@@ -6,7 +6,8 @@
 package healthcarereportsystem;
 
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
-import static healthcarereportsystem.HealthCareReportSystem.profileName;
+import static healthcarereportsystem.HealthCareReportSystem.username;
+import javax.swing.JLabel;
 
 /**
  *
@@ -19,8 +20,20 @@ public class PatientProfile extends javax.swing.JFrame {
      */
     public PatientProfile() {
         initComponents();
-        patientName.setText(profileName);
+        
+        getUsername_lable().setText(username);
+       
     }
+
+    public JLabel getUsername_lable() {
+        return username_lable;
+    }
+
+    public void setUsername_lable(JLabel username_lable) {
+        this.username_lable = username_lable;
+    }
+
+ 
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,7 +50,7 @@ public class PatientProfile extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        patientName = new javax.swing.JLabel();
+        username_lable = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         home = new javax.swing.JButton();
 
@@ -46,16 +59,36 @@ public class PatientProfile extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Report List");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Prescription List");
 
         jButton3.setText("Test List");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Details");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
-        patientName.setText("Patient Name");
+        username_lable.setText("Patient Name");
 
         jButton5.setText("Back");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         home.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         home.setText("HOME");
@@ -72,7 +105,7 @@ public class PatientProfile extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(patientName, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(username_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4))
                 .addContainerGap(450, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -93,7 +126,7 @@ public class PatientProfile extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(61, 61, 61)
-                .addComponent(patientName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(username_lable, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
@@ -118,6 +151,30 @@ public class PatientProfile extends javax.swing.JFrame {
         StartPage st = new StartPage();
         goKlickedPage(this,st);
     }//GEN-LAST:event_homeActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        p_details pd = new p_details();
+        goKlickedPage(this, pd);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        ShowTestList st = new ShowTestList();
+        goKlickedPage(this, st);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ShowReportList sr = new ShowReportList();
+        goKlickedPage(this, sr);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        PatientSignIn pt = new PatientSignIn();
+        goKlickedPage(this, pt);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -163,6 +220,6 @@ public class PatientProfile extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel patientName;
+    private javax.swing.JLabel username_lable;
     // End of variables declaration//GEN-END:variables
 }

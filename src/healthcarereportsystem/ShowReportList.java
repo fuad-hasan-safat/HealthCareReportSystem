@@ -6,6 +6,7 @@
 package healthcarereportsystem;
 
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
+import static healthcarereportsystem.HealthCareReportSystem.userid;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -36,7 +37,7 @@ public class ShowReportList extends javax.swing.JFrame {
                     "jdbc:sqlserver://localhost:1433;databaseName=HealthCareReportSystem;selectMethod=cursor", "sa", "7896");
                
           
-             String s = "1042";//FIX THIS PART//
+             String s = String.valueOf(userid);
              //Je Log in korbe ekhane tar ID hobe
              
              String query = "select * From Report where patientId = "+s+" Order by date desc" ;
