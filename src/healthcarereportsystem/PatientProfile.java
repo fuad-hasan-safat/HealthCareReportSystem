@@ -8,7 +8,6 @@ package healthcarereportsystem;
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
 import static healthcarereportsystem.HealthCareReportSystem.username;
 import javax.swing.JLabel;
-import static healthcarereportsystem.HealthCareReportSystem.profileName;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -272,7 +271,6 @@ public class PatientProfile extends javax.swing.JFrame {
         goKlickedPage(this,st);
     }//GEN-LAST:event_homeActionPerformed
 
-<<<<<<< HEAD
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         p_details pd = new p_details();
@@ -296,7 +294,7 @@ public class PatientProfile extends javax.swing.JFrame {
         PatientSignIn pt = new PatientSignIn();
         goKlickedPage(this, pt);
     }//GEN-LAST:event_jButton5ActionPerformed
-=======
+
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
         
@@ -308,7 +306,9 @@ public class PatientProfile extends javax.swing.JFrame {
                     "jdbc:sqlserver://localhost:1433;databaseName=HealthCareReportSystem;selectMethod=cursor", "sa", "7896");
 
                 
-             String sql = "SELECT Patient_.patientId, Patient_.bloodGroup, Patient_.sex, Patient_.dateOFBirth, Patient_.contact, Patient_.country, Patient_.division, Patient_.district, Patient_.village, Patient_.thana, Patient_.road, Patient_.houseNo, PatientLogIn_.email FROM Patient_ INNER JOIN PatientLogIn_ ON Patient_.userName = PatientLogIn_.userName WHERE Patient_.userName =  ?";
+             String sql = "SELECT Patient_.patientId, Patient_.bloodGroup, Patient_.sex, Patient_.dateOFBirth, Patient_.contact, Patient_.country, Patient_.division, "
+                     + "Patient_.district, Patient_.village, Patient_.thana, Patient_.road, Patient_.houseNo, PatientLogIn_.email FROM Patient_ INNER JOIN PatientLogIn_ "
+                     + "ON Patient_.userName = PatientLogIn_.userName WHERE Patient_.userName =  ?";
                         
                         PreparedStatement pst = connection.prepareStatement(sql);
                         pst.setString(1, PatientSignIn.Pusername);
@@ -344,7 +344,7 @@ public class PatientProfile extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_formWindowOpened
->>>>>>> 8f5fa9ea0600bd67ee7e016b8b33552acca4aad8
+
 
     /**
      * @param args the command line arguments

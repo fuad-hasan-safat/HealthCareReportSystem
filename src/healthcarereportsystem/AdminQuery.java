@@ -58,7 +58,7 @@ public class AdminQuery extends javax.swing.JFrame {
     private void initComponents() {
 
         label = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        go = new javax.swing.JButton();
         selectOption = new javax.swing.JComboBox<>();
         logout = new javax.swing.JButton();
         username = new javax.swing.JTextField();
@@ -69,11 +69,11 @@ public class AdminQuery extends javax.swing.JFrame {
 
         label.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jButton1.setText("Go");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        go.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        go.setText("Go");
+        go.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                goActionPerformed(evt);
             }
         });
 
@@ -114,7 +114,7 @@ public class AdminQuery extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(109, 109, 109)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(go, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(delete)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -131,9 +131,9 @@ public class AdminQuery extends javax.swing.JFrame {
                     .addComponent(selectOption, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton1)
+                    .addComponent(go)
                     .addComponent(delete))
-                .addContainerGap(207, Short.MAX_VALUE))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
 
         pack();
@@ -160,9 +160,56 @@ public class AdminQuery extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_logoutActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void goActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+         try {
+            ConnectMSSQL con = new ConnectMSSQL();
+            con.connectDatabase();
+             if(selectOption.getSelectedIndex() == 2){
+                  String sql = "SELECT * FROM Patient_ WHERE userName='"+username.getText()+"'";
+                  PreparedStatement pst = cn.prepareStatement(sql);
+                  ResultSet rs = pst.executeQuery();
+                  if(rs.next()){
+                      System.out.println("done");
+                      AdminAll adl = new AdminAll();
+                      adl.getFirstName().setText(rs.getString(2));
+                      adl.getLastName().setText(rs.getString(3));
+                      adl.getUsername().setText(rs.getString(4));
+                      
+                      adl.getBloodGroup().setSelectedItem(rs.getString(5));
+                      adl.getSex().setSelectedItem(rs.getString(6));
+                      ((JTextField)adl.getDateOfBirth().getDateEditor().getUiComponent()).setText(rs.getString(7));
+                      adl.getCountry().setSelectedItem(rs.getString(8));
+                      adl.getDivision().setSelectedItem(rs.getString(9));
+                      adl.getDistrict().setText(rs.getString(10));
+                      adl.getCity().setText(rs.getString(11));
+                      adl.getThana().setText(rs.getString(12));
+                      adl.getRoad().setText(rs.getString(13));
+                      adl.getHouse().setText(rs.getString(14));
+                      cn.close();
+                      this.setVisible(false);
+                      adl.setVisible(true);
+                  }
+             }
+
+            cn.close();
+
+            
+
+            
+            
+            //JOptionPane.showMessageDialog(null, "Doctor Id = "+ userid+", username = "+username + ", Profilename = "+profileName);
+//            DoctorProfile.getDoctorNameShow().setText(profileName);
+//          
+//            DoctorProfile.getUserid().setText(Integer.toString(userid));
+//            
+//            DoctorProfile.getBMDC().setText(Integer.toString(bmdc));
+
+
+        } catch (ClassNotFoundException | SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_goActionPerformed
 
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
@@ -238,7 +285,7 @@ public class AdminQuery extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton delete;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton go;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel label;
     private javax.swing.JButton logout;
