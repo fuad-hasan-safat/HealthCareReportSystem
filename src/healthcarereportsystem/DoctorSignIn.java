@@ -26,6 +26,8 @@ import javax.swing.JTextField;
  * @author DELL
  */
 public class DoctorSignIn extends javax.swing.JFrame {
+    
+    public static String Dusername;
 
     /**
      * Creates new form DoctorSignIn
@@ -157,6 +159,12 @@ public class DoctorSignIn extends javax.swing.JFrame {
 
     private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
         // TODO add your handling code here:
+        
+        
+        String temp = userName.getText();
+        Dusername = temp;
+        
+        
         try {
             ConnectMSSQL con = new ConnectMSSQL();
             con.connectDatabase();

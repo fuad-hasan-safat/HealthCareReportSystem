@@ -25,6 +25,14 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
     /**
      * Creates new form DiagnosticCenterSignIn
      */
+    
+    
+    public static String Dusername;
+
+    	
+
+
+        
     public DiagnosticCenterSignIn() {
         initComponents();
         
@@ -35,7 +43,7 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
     }
 
     public JTextField getUsername() {
-        return username;
+        return userName;
     }
 
     /**
@@ -47,7 +55,7 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        username = new javax.swing.JTextField();
+        userName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         password = new javax.swing.JPasswordField();
@@ -58,7 +66,7 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        username.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
+        userName.setFont(new java.awt.Font("Yu Gothic Medium", 0, 12)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("Username        :");
@@ -102,7 +110,7 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
                             .addGap(30, 30, 30)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(username)
+                                .addComponent(userName)
                                 .addComponent(password, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(296, 296, 296)
@@ -117,7 +125,7 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -145,7 +153,13 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
 
     private void signInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signInActionPerformed
         // TODO add your handling code here:
-         try
+        
+        
+        
+        String temp = userName.getText();
+        Dusername = temp;
+        
+        try
         {
             ConnectMSSQL con = new ConnectMSSQL();
             con.connectDatabase();
@@ -168,7 +182,7 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
             
             cn.close();
             
-            resetLoginFields(username,password);
+            resetLoginFields(userName,password);
             DoctorProfile p = new DoctorProfile();
             if(b) HealthCareReportSystem.goKlickedPage(this, p);
             
@@ -223,6 +237,6 @@ public class DiagnosticCenterSignIn extends javax.swing.JFrame {
     private javax.swing.JPasswordField password;
     private javax.swing.JButton signIn;
     private javax.swing.JButton signUp;
-    private javax.swing.JTextField username;
+    private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables
 }

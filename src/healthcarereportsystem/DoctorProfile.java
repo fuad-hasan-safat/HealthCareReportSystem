@@ -5,16 +5,12 @@
  */
 package healthcarereportsystem;
 
-import static healthcarereportsystem.ConnectMSSQL.cn;
 import static healthcarereportsystem.HealthCareReportSystem.goKlickedPage;
-import static healthcarereportsystem.HealthCareReportSystem.profileName;
-import static healthcarereportsystem.HealthCareReportSystem.userid;
-import static healthcarereportsystem.HealthCareReportSystem.username;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -34,18 +30,18 @@ public class DoctorProfile extends javax.swing.JFrame {
     }
 
     public JLabel getUserid() {
-        return userid_;
+        return did;
     }
 
 
     public static JLabel getDoctorNameShow() {
-        return doctorNameShow;
+        return dn;
     }
     
 
 
     public static void setDoctorNameShow(JLabel doctorNameShow) {
-        DoctorProfile.doctorNameShow = doctorNameShow;
+        DoctorProfile.dn = doctorNameShow;
     }
 
     /**
@@ -57,25 +53,31 @@ public class DoctorProfile extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        doctorNameShow = new javax.swing.JLabel();
-        details = new javax.swing.JButton();
+        dn = new javax.swing.JLabel();
         sendTest = new javax.swing.JButton();
         sendPrescription = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         home = new javax.swing.JButton();
-        userid_ = new javax.swing.JLabel();
-        bmdc_ = new javax.swing.JLabel();
+        did = new javax.swing.JLabel();
+        bmdc = new javax.swing.JLabel();
+        sp = new javax.swing.JLabel();
+        ps = new javax.swing.JLabel();
+        dg = new javax.swing.JLabel();
+        clg = new javax.swing.JLabel();
+        pn = new javax.swing.JLabel();
+        bg = new javax.swing.JLabel();
+        db = new javax.swing.JLabel();
+        sx = new javax.swing.JLabel();
+        em = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        doctorNameShow.setText("Doctor Name");
-
-        details.setText("Details");
-        details.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                detailsActionPerformed(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
+
+        dn.setText("Doctor Name");
 
         sendTest.setText("Send Test");
         sendTest.addActionListener(new java.awt.event.ActionListener() {
@@ -101,57 +103,97 @@ public class DoctorProfile extends javax.swing.JFrame {
             }
         });
 
-        userid_.setText("Doctor id");
+        did.setText("Doctor id");
 
-        bmdc_.setText("bmdc");
+        bmdc.setText("bmdc");
+
+        sp.setText("speciality");
+
+        ps.setText("posting");
+
+        dg.setText("degree");
+
+        clg.setText("college");
+
+        pn.setText("phone");
+
+        bg.setText("bloodgroup");
+
+        db.setText("date of birth");
+
+        sx.setText("sex");
+
+        em.setText("email");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(415, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sendPrescription)
-                    .addComponent(sendTest))
-                .addGap(52, 52, 52))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 346, Short.MAX_VALUE)
+                        .addComponent(home, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(sendPrescription, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(sendTest, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(details)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(doctorNameShow, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(122, 122, 122)
-                        .addComponent(userid_, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(62, 62, 62)
-                        .addComponent(bmdc_)))
-                .addContainerGap(161, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(home, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(19, 19, 19))
+                    .addComponent(dn, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(did, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bmdc)
+                    .addComponent(sp)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(dg)
+                        .addComponent(ps)
+                        .addComponent(clg)))
+                .addGap(130, 130, 130)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(em)
+                    .addComponent(sx)
+                    .addComponent(db)
+                    .addComponent(bg)
+                    .addComponent(pn))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(doctorNameShow)
-                            .addComponent(userid_)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(61, 61, 61)
-                        .addComponent(bmdc_)))
-                .addGap(20, 20, 20)
-                .addComponent(details)
-                .addGap(57, 57, 57)
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dn)
+                    .addComponent(pn))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(did)
+                    .addComponent(bg))
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bmdc)
+                    .addComponent(db))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(sp)
+                    .addComponent(sx))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ps)
+                    .addComponent(em))
+                .addGap(18, 18, 18)
+                .addComponent(dg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(clg)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                 .addComponent(sendTest)
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(sendPrescription)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 130, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(home))
@@ -182,109 +224,53 @@ public class DoctorProfile extends javax.swing.JFrame {
         setVisible(false);
     }//GEN-LAST:event_sendPrescriptionActionPerformed
 
-    private void detailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailsActionPerformed
-//        // TODO add your handling code here:
-
-
-
-
-
-
-
-            // TODO add your handling code here:
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         
-        // TODO add your handling code here:
-        try {
-            ConnectMSSQL con = new ConnectMSSQL();
-            con.connectDatabase();
+        
+        
+        
+            try {
+                    Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                    Connection connection = DriverManager.getConnection(
+                    "jdbc:sqlserver://localhost:1433;databaseName=HealthCareReportSystem;selectMethod=cursor", "sa", "7896");
 
-            d_details st = new d_details();
-            goKlickedPage(this,st);
-            
-            String s = userid_.getText();
-      
+                
+             String sql = "Select Doctor_.firstName, Doctor_.doctorID, Doctor_.speciality, Doctor_.BDMCNO, Doctor_.speciality, Doctor_.currentWorkingPlace, Doctor_.degree, Doctor_.graduatedFrom, Doctor_.contact, Doctor_.bloodGroup, Doctor_.dateOFBirth, Doctor_.sex, DoctorLogIn_.email from Doctor_ INNER JOIN DoctorLogIn_ ON Doctor_.userName = DoctorLogIn_.userName WHERE Doctor_.userName = ?";
+                        
+                        PreparedStatement pst = connection.prepareStatement(sql);
+                        pst.setString(1, DoctorSignIn.Dusername);
+                        
+                        ResultSet rs = pst.executeQuery();
+                        
+                        while(rs.next())
+                        {
+                            
+                            
+                            dn.setText(rs.getString("firstName"));
+                            em.setText(rs.getString("email"));
+                            sp.setText(rs.getString("speciality"));
+                            ps.setText(rs.getString("currentWorkingPlace"));
+                            dg.setText(rs.getString("degree"));
+                            clg.setText(rs.getString("graduatedFrom"));
+                            pn.setText(rs.getString("contact"));
+                            bg.setText(rs.getString("bloodGroup"));
+                            db.setText(rs.getString("dateOFBirth"));
+                            sx.setText(rs.getString("sex"));
+                            bmdc.setText(rs.getString("BDMCNO"));
+                            did.setText(rs.getString("doctorID"));
+                            
+                            
+                            
+                            
+                        }
 
-            String sql = "SELECT * FROM Patient_ WHERE patientId = 's'";
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-
-
-            PreparedStatement pst = cn.prepareCall(sql);
-
-
-            ResultSet rs = pst.executeQuery();
-
-           
-           // getProfileName(rs);
-
-
-          //  DoctorProfile.getDoctorNameShow().setText(profileName);
-          
-          
-            //d_details.getUserid().setText(Integer.toString(userid));
-
-
-
-        } catch (ClassNotFoundException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-//        
-//        // TODO add your handling code here:
-//        try {
-//            ConnectMSSQL con = new ConnectMSSQL();
-//            con.connectDatabase();
-//            
-//            String s = userid_.getText();
-//      
-//
-//           // String sql = "SELECT * FROM DoctorLogIn_ WHERE userName=? and password=?";
-//
-//            String sql1 = "select * from Doctor_ where =?"; // profile
-//
-//            PreparedStatement pst = cn.prepareCall(sql);
-//
-//            PreparedStatement pstName = cn.prepareCall(sql1); // profile
-//
-//           // logInDoctorandFetchName(pst, pstName, this);
-//
-//            ResultSet rs = pst.executeQuery();
-//            ResultSet rs1 = pstName.executeQuery();
-//           
-//            getProfileName(rs1);
-//
-//            cn.close();
-//
-//            resetLoginFields(userName, password);
-//
-//            
-//            
-//            JOptionPane.showMessageDialog(null, "Doctor Id = "+ userid+", username = "+username + ", Profilename = "+profileName);
-//            DoctorProfile.getDoctorNameShow().setText(profileName);
-//          
-//            DoctorProfile.getUserid().setText(Integer.toString(userid));
-//
-//            if (b) {
-//                HealthCareReportSystem.goKlickedPage(this, DoctorProfile);
-//            } else {
-//                JOptionPane.showMessageDialog(null, "Invalid pass or user name");
-//            }
-//
-//        } catch (ClassNotFoundException | SQLException e) {
-//            JOptionPane.showMessageDialog(null, e);
-//        }
-
-    }//GEN-LAST:event_detailsActionPerformed
+        
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -322,13 +308,21 @@ public class DoctorProfile extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bmdc_;
-    private javax.swing.JButton details;
-    private static javax.swing.JLabel doctorNameShow;
+    private javax.swing.JLabel bg;
+    private javax.swing.JLabel bmdc;
+    private javax.swing.JLabel clg;
+    private javax.swing.JLabel db;
+    private javax.swing.JLabel dg;
+    private javax.swing.JLabel did;
+    private static javax.swing.JLabel dn;
+    private javax.swing.JLabel em;
     private javax.swing.JButton home;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel pn;
+    private javax.swing.JLabel ps;
     private javax.swing.JButton sendPrescription;
     private javax.swing.JButton sendTest;
-    private javax.swing.JLabel userid_;
+    private javax.swing.JLabel sp;
+    private javax.swing.JLabel sx;
     // End of variables declaration//GEN-END:variables
 }
